@@ -1,0 +1,90 @@
+{
+  "taskDefinitionArn": "arn:aws:ecs:ca-central-1:**********:task-definition/ops-bastion:1",
+  "containerDefinitions": [
+    {
+      "name": "ops-bastion",
+      "image": "***********.dkr.ecr.ca-central-1.amazonaws.com/********-ops-bastion:latest",
+      "cpu": 256,
+      "memory": 1024,
+      "portMappings": [],
+      "essential": true,
+      "command": [],
+      "environment": [
+        {
+          "name": "AWS_XRAY_CONTEXT_MISSING",
+          "value": "LOG_ERROR"
+        },
+        {
+          "name": "NODE_ENV",
+          "value": "production"
+        },
+        {
+          "name": "AWS_XRAY_DEBUG_MODE",
+          "value": "TRUE"
+        },
+        {
+          "name": "ACCOUNT_ID",
+          "value": "110849504571"
+        }
+      ],
+      "mountPoints": [],
+      "volumesFrom": [],
+      "secrets": [],
+      "readonlyRootFilesystem": false,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/aws/ecs/ops-bastion",
+          "awslogs-region": "ca-central-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "systemControls": []
+    }
+  ],
+  "family": "ops-bastion",
+  "taskRoleArn": "arn:aws:iam::**********:role/ops-bastion-docker-role",
+  "executionRoleArn": "arn:aws:iam::*********:role/ops-bastion-docker-execution-role",
+  "networkMode": "awsvpc",
+  "revision": 1,
+  "volumes": [],
+  "status": "ACTIVE",
+  "requiresAttributes": [
+    {
+      "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+    },
+    {
+      "name": "ecs.capability.execution-role-awslogs"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.ecr-auth"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.task-iam-role"
+    },
+    {
+      "name": "ecs.capability.execution-role-ecr-pull"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+    },
+    {
+      "name": "ecs.capability.task-eni"
+    }
+  ],
+  "placementConstraints": [],
+  "compatibilities": ["EC2", "FARGATE"],
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "1024",
+  "runtimePlatform": {
+    "cpuArchitecture": "ARM64",
+    "operatingSystemFamily": "LINUX"
+  },
+  "registeredAt": "2024-08-30T18:15:03.875Z",
+  "registeredBy": "arn:aws:sts::**********:assumed-role/*****/aws-go-sdk-1725041701518077000",
+  "tags": []
+}
