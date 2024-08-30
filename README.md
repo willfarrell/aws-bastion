@@ -1,6 +1,6 @@
 # aws-bastion
 
-Fargate container and script to have bastion only running when needed.
+Fargate container and script to trigger a bastion. Only runs when needed.
 
 1. Setup ECS Task definition (see task-definition.json & task-iam.json)
 2. Copy aws-bastion.sh where you need it.
@@ -20,6 +20,7 @@ alias rds-dev=rds-dev
 
 - no ssh needed
 - only runs when needed (1min interval)
+- Connect to env at once
 
 ## TODO
 
