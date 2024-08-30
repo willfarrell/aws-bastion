@@ -1,0 +1,13 @@
+statement {
+  sid     = "SSM"
+  effect  = "Allow"
+  actions = [
+    "ssmmessages:CreateControlChannel",
+    "ssmmessages:CreateDataChannel",
+    "ssmmessages:OpenControlChannel",
+    "ssmmessages:OpenDataChannel"
+  ]
+  resources = [
+    "*"
+  ]
+}
