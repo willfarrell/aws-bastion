@@ -20,11 +20,10 @@ alias rds-dev=rds-dev
 
 - no ssh needed
 - only runs when needed (1min interval)
-- Connect to env at once
+- Connect to multiple env at once
 
 ## TODO
 
-- Setup SSM Agent logs to go to CloudWatch properly
 - Allow picking of sg using name
 - Allow picking of subnets using name
 - Ability to disconnect when when container closes

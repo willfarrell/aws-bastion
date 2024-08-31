@@ -1,0 +1,8 @@
+<outputs formatid="fmtinfo">
+   <console formatid="fmtinfo"/>
+   <rollingfile type="size" filename="/var/log/amazon/ssm/amazon-ssm-agent.log" maxsize="30000000" maxrolls="5"/>
+   <filter levels="error,critical" formatid="fmterror">
+      <rollingfile type="size" filename="/var/log/amazon/ssm/errors.log" maxsize="10000000" maxrolls="5"/>
+   </filter>
+   <custom name="cloudwatch_receiver" formatid="fmtdebug" data-log-group="/aws/ecs/bastion"/>
+</outputs>
