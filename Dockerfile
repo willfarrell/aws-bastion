@@ -5,7 +5,7 @@ WORKDIR /
 
 RUN yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_arm64/amazon-ssm-agent.rpm
 
-COPY ./seelog.xml.template /etc/amazon/ssm/
+COPY ./seelog.xml /etc/amazon/ssm/
 COPY ./docker-entrypoint.sh /
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
