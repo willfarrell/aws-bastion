@@ -38,6 +38,7 @@ rds-dev
 
 ## TODO
 
+- Pass [Security Hub ECS.5 | ECS containers should be limited to read-only access to root filesystems](https://github.com/aws/amazon-ssm-agent/issues/588)
 - Allow picking of sg using name
 - Allow picking of subnets using name
-- Ability to disconnect when when container closes
+- Ability to auto-disconnect when when container closes unexpectedly

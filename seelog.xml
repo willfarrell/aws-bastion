@@ -4,5 +4,5 @@
    <filter levels="error,critical" formatid="fmterror">
       <rollingfile type="size" filename="/var/log/amazon/ssm/errors.log" maxsize="10000000" maxrolls="5"/>
    </filter>
-   <custom name="cloudwatch_receiver" formatid="fmtdebug" data-log-group="/aws/ecs/bastion"/>
+   <custom name="cloudwatch_receiver" formatid="fmtdebug" data-log-group="/aws/ecs/ops-bastion"/>
 </outputs>
