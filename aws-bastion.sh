@@ -44,7 +44,7 @@ while [[ $# -gt 0 ]]; do
         shift # past argument
         shift # past value
         ;;
-        
+      
         *)    # unknown option
         POSITIONAL+=("$1") # save it in an array for later
         shift # past argument
@@ -82,14 +82,26 @@ fi
 
 if [ -z "${REMOTE_PORT}" ]; then
   # Ref: https://awscli.amazonaws.com/v2/documentation/api/2.1.30/reference/ecs/run-task.html
-  echo "--remote-port required. Port to be proxyed to";
+  echo "--remote-port required. Port to be proxied to";
   exit 1;
 fi
 
 if [ -z "${REMOTE_HOST}" ]; then
   # Ref: https://awscli.amazonaws.com/v2/documentation/api/2.1.30/reference/ecs/run-task.html
-  echo "--remote-host required. Where port should be proxyed to";
+  echo "--remote-host required. Where port should be proxied to";
   exit 1;
+fi
+
+# Check authorization
+STS=$(aws sts get-caller-identity --profile ${AWS_PROFILE} --query 'Account' --output text || echo "ERROR")
+if [  "${STS}" == "ERROR" ]; then
+  # If running into issue: rm -rf ~/.aws/sso/cache
+  aws sso login --profile ${AWS_PROFILE}
+  STS=$(aws sts get-caller-identity --profile ${AWS_PROFILE} --query 'Account' --output text || echo "ERROR")
+  if [ "${STS}" == "ERROR" ]; then
+    echo "Authorization failed"
+    exit 1
+  fi
 fi
 
 # Check if already running
@@ -124,10 +136,3 @@ aws ssm start-session --profile ${AWS_PROFILE} --region ${AWS_REGION} \
   --target ecs:${CLUSTER}_${INSTANCE_ID:0:32}_${INSTANCE_ID} \
   --document-name "AWS-StartPortForwardingSessionToRemoteHost" \
   --parameters portNumber=${REMOTE_PORT},localPortNumber=${LOCAL_PORT},host=${REMOTE_HOST}
-
-
-
-
-
-
-
