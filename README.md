@@ -5,6 +5,7 @@ Fargate container and script to trigger a bastion. Only runs when needed.
 ## Features
 
 - no ssh needed
+- auto fallback to trigger sso login
 - only runs when needed (1min interval)
 - Connect to multiple env at once
 
